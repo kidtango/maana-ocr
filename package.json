@@ -46,7 +46,7 @@
     "schemaglue": "^4.0.4",
     "subscriptions-transport-ws": "^0.9.16",
     "tesseract.js": "^2.0.2",
-    "uuid": "^3.3.3"
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",

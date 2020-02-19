@@ -2,6 +2,7 @@ import { log, print } from 'io.maana.shared'
 import { gql } from 'apollo-server-express'
 import { createWorker } from 'tesseract.js'
 import { PDFImage } from 'pdf-image'
+import { v1 as uuidv1 } from 'uuid'
 import http from 'http'
 import fs from 'fs'
 import path from 'path'
@@ -27,6 +28,9 @@ const download = (url, dest) => {
       })
   })
 }
+
+// TODO: delete this
+// const testFile = 'https://tesseract.projectnaptha.com/img/eng_bw.png'
 
 const extractTextFromImageFile = async path => {
   const worker = createWorker()
@@ -82,7 +86,7 @@ export const resolver = {
     },
     extractTextFromPdf: async (_, { file }, { client }) => {
       const dir = path.resolve(__dirname, `./pdf/`)
-      const pdfPath = await download(file.id, `${dir}/${uuid()}.pdf`)
+      const pdfPath = await download(file.id, `${dir}/${uuidv1()}.pdf`)
 
       const pdfImage = new PDFImage(pdfPath, {
         convertOptions: {
