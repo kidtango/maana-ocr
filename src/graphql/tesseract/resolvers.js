@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express'
 import { createWorker } from 'tesseract.js'
 import { PDFImage } from 'pdf-image'
 import { v1 as uuidv1 } from 'uuid'
-import http from 'http'
+import https from 'https'
 import fs from 'fs'
 import path from 'path'
 
@@ -14,7 +14,7 @@ const SELF = SERVICE_ID || 'io.maana.template'
 const download = (url, dest) => {
   return new Promise((resolve, reject) => {
     var file = fs.createWriteStream(dest)
-    http
+    https
       .get(url, function(response) {
         response.pipe(file)
         file.on('finish', function() {
